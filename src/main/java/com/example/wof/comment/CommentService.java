@@ -1,11 +1,11 @@
 package com.example.wof.comment;
 
+import com.example.wof.fails.FailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -15,7 +15,7 @@ public class CommentService {
 
     public List<CommentDto> getComment(Integer failId) {
         List<CommentEntity> allByFailId = commentRepository.findAllByFailId(failId);
-        return allByFailId.stream().map(CommentMapper.INSTANCE::commentEntityToComment).collect(Collectors.toList());
+        return allByFailId.stream().map(CommentMapper.INSTANCE::commentEntityToComment).toList();
 
     }
 
